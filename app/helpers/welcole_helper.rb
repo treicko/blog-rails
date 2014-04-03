@@ -1,0 +1,2 @@
+module WelcoleHelper
+end
