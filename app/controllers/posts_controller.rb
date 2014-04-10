@@ -61,6 +61,31 @@ class PostsController < ApplicationController
     end
   end
 
+  def pantalla_principal
+    @posts = Post.all.sort{ |x,y| y.created_at <=> x.created_at }
+  end
+
+  def aniadir_like
+    @post = Post.find(params[:id])
+    @post.like = @post.like ? @post.like+1 : 1
+    #@post.like += 1 #esto me daria error por que like esta en nill 
+    #otra manera: @movie.like = @movie.like? @movie.like+1 : 1 esto aplicara si esta definido le suma, y si no le asigna 1
+
+    @post.save # siempre hay q validar el save.
+    #@posts = Post.all
+    redirect_to '/posts/pantalla_principal'
+  end
+
+  def search_by_text
+    #@posts = Post.where("text LIKE ?", "%#{params[:texto_comentario]}%") cual es mas seguro??
+    # Client.where("first_name LIKE '%#{params[:first_name]}%'")
+    @posts = Post.where(Post.arel_table[:text].matches("%#{params[:texto_comentario]}%"))
+  end
+
+  def post_comentarios
+    @post = Post.find(params[:id])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post

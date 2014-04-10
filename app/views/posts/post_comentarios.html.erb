@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="page-header" id="banner">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-5" >
+        <h1>Super Blog</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-8 col-lg-offset-3">
+	  <div class="bs-docs-section">
+	    <h2 id="tables" class="page-header"><strong>Titulo:</strong> <%= @post.title %></h2>
+	    <div class="bs-example">
+			<p class="">
+				<h4>
+				  <strong>Texto:</strong><br><br>
+				  <p class="col-lg-offset-1">
+				  	<%= @post.text %>
+				  </p>
+				</h4>	
+			</p>
+
+			<p class="">
+				<br>
+				<%= @post.created_at.strftime("%d %B %Y - %H:%M") %>
+			</p>
+			<p class="">
+				<a href="/posts/aniadir_like/<%= @post.id %>"><font color="sky blue">Me gusta</font></a>
+				<%= @post.like %>
+			</p>
+			<legend></legend><br>
+	    </div>
+	  </div>
+
+	  <div class="bs-docs-section">
+	  	<strong><h2>Comentarios</h2></strong>
+	  	<legend></legend>
+	  </div>
+  </div>
+
+</div>

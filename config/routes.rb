@@ -1,12 +1,31 @@
 Blog::Application.routes.draw do
+  get '/posts/pantalla_principal' => 'posts#pantalla_principal'
+  get '/posts/aniadir_like/:id' => 'posts#aniadir_like'
+  get '/posts/search_by_text' => 'posts#search_by_text'
+  get '/posts/post_comentarios/:id' => 'posts#post_comentarios'
+  root 'posts#pantalla_principal'
   resources :posts
 
   get "welcole/index"
+
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcole#index'
+  
+
+#Posts::Application.routes.draw do
+  #get '/posts/search' => 'posts#search'
+  #get '/posts/report' => 'posts#report'
+  #get '/posts/comment/save/:id' => 'posts#save'
+  #get '/posts/like2/:id' => 'posts#like2'
+  #get '/posts/comment/:id' => 'posts#comment'
+  #get '/posts/like/:id' => 'posts#like'
+  #get '/posts/admi' => 'posts#indexadmi'
+  #get '/posts/admi/new' => 'posts#new'
+  #root 'posts#index'
+  #resources :posts
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

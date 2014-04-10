@@ -1,74 +1,58 @@
-<h1>Listing posts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Titulo</th>
-      <th>Texto</th>
-      <th>Creado_en</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% cont=1 %>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= cont %></td>
-        <td><%= post.title %></td>
-        <td><%= post.text %></td>
-        <td><%= post.created_at %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Esta Seguro?' } %></td>
-        <% cont=cont+1 %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>
-
-
 <div class="container">
-  <div class="bs-docs-section">
-      <h1 id="tables" class="page-header">Lista De Posts</h1>
-    <div class="bs-example">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Titulo</th>
-              <th>Texto</th>
-              <th>Creado_en</th>
-              <th></th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <% cont=1 %>
-            <% @posts.each do |post| %>
-              <tr>
-                <td><%= cont %></td>
-                <td><%= post.title %></td>
-                <td><%= post.text %></td>
-                <td><%= post.created_at %></td>
-                <td><%= link_to 'Show', post %></td>
-                <td><%= link_to 'Edit', edit_post_path(post) %></td>
-                <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                <% cont=cont+1 %>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+  <div class="page-header" id="banner">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-5" >
+        <h1>Super Blog</h1>
+        <p class="lead">Pantalla Administrativa</p>
       </div>
+    </div>
+  </div>
+
+  <div class="col-lg-8 col-lg-offset-4">
+    <div class="bs-docs-section">
+      <form class="navbar-form navbar-left" role="search" action="/posts/search_by_text">
+        <label class="control-label"> Buscar Por: </label>
+        <div class="form-group has-success">
+          <input type="text" class="form-control" name="texto_comentario" placeholder="Texto de Comentario">
+        </div>
+        <button type="submit" class="btn btn-success">Buscar</button>
+      </form>
+    </div>
+  </div>
+    
+
+  <div class="bs-docs-section">
+    <h2 id="tables" class="page-header">Lista De Posts</h2>
+    <div class="bs-example">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Titulo</th>
+            <th>Texto</th>
+            <th>Creado en</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% cont=1 %>
+          <% @posts.each do |post| %>
+            <tr>
+              <td><%= cont %></td>
+              <td><%= post.title %></td>
+              <td><%= post.text %></td>
+              <td><%= post.created_at.strftime("%d %B %Y - %H:%M") %></td>
+              <td><%= link_to 'Show', post %></td>
+              <td><%= link_to 'Edit', edit_post_path(post) %></td>
+              <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% cont=cont+1 %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
