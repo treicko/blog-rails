@@ -28,6 +28,9 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+        @ultimo_post = Post.last
+        @historico_post = HistoricoPost.new(id_post: @ultimo_post.id, title: @ultimo_post.title, text: @ultimo_post.text)
+        @historico_post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render action: 'show', status: :created, location: @post }
       else
