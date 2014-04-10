@@ -106,6 +106,10 @@ class PostsController < ApplicationController
      @posts = Post.where(Post.arel_table[:category].matches("%#{params[:texto_categoria]}%"))
   end
 
+  def ver_historico
+    @historicos = Post.where("text LIKE ?", "%#{params[:texto_comentario]}%")
+    @historicos = HistoricoPost.where("id_post ?", "params[:id]")
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
