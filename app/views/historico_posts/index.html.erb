@@ -1,0 +1,31 @@
+<h1>Listing historico_posts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id post</th>
+      <th>Title</th>
+      <th>Text</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @historico_posts.each do |historico_post| %>
+      <tr>
+        <td><%= historico_post.id_post %></td>
+        <td><%= historico_post.title %></td>
+        <td><%= historico_post.text %></td>
+        <td><%= link_to 'Show', historico_post %></td>
+        <td><%= link_to 'Edit', edit_historico_post_path(historico_post) %></td>
+        <td><%= link_to 'Destroy', historico_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Historico post', new_historico_post_path %>

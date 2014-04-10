@@ -86,6 +86,22 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def reducir_like
+    @post=Post.find(params[:id])
+    if(@post.like>0)
+      @post.like=@post.like-1 
+    else
+      @post.like = 0
+    end
+    @post.save
+    redirect_to '/posts/pantalla_principal'
+  end
+
+  def search_by_category
+     @posts = Post.where(Post.arel_table[:category].matches("%#{params[:texto_categoria]}%"))
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
@@ -94,6 +110,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :text)
+      params.require(:post).permit(:title, :text, :category)
     end
 end

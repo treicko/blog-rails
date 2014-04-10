@@ -30,7 +30,8 @@
 			</p>
 			<p class="col-lg-2 col-lg-offset-1">
 				<a href="/posts/aniadir_like/<%= post.id %>"><font color="sky blue">Me gusta</font></a>
-				<%= post.like %>
+				<%= post.like %><br>
+				<a href="/posts/reducir_like/<%= post.id %>"><font color="sky blue">No Me gusta</font></a>
 			</p>
 			<legend></legend><br>
         <% end %>

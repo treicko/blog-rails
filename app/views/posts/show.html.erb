@@ -1,14 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="bs-docs-section">
+    <h1 id="tables" class="page-header">Ver Post</h1>
+    <div class="bs-example">
+		<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+		<p>
+		  <strong>Title:</strong>
+		  <%= @post.title %>
+		</p>
 
-<p>
-  <strong>Text:</strong>
-  <%= @post.text %>
-</p>
+		<p>
+		  <strong>Text:</strong>
+		  <%= @post.text %>
+		</p>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+		<p>
+		  <strong>Categoria:</strong>
+		  <%= @post.category %>
+		</p>
+
+		<%= link_to 'Edit', edit_post_path(@post) %> |
+		<%= link_to 'Back', posts_path %>
+    </div>
+  </div>
+</div>
+

@@ -1,7 +1,13 @@
 Blog::Application.routes.draw do
+  resources :historico_posts
+
+  resources :comments
+
   get '/posts/pantalla_principal' => 'posts#pantalla_principal'
   get '/posts/aniadir_like/:id' => 'posts#aniadir_like'
+  get '/posts/reducir_like/:id' => 'posts#reducir_like'
   get '/posts/search_by_text' => 'posts#search_by_text'
+  get '/posts/search_by_category' => 'posts#search_by_category'
   get '/posts/post_comentarios/:id' => 'posts#post_comentarios'
   root 'posts#pantalla_principal'
   resources :posts
@@ -16,6 +22,10 @@ Blog::Application.routes.draw do
   
 
 #Posts::Application.routes.draw do
+  resources :historico_posts
+
+  resources :comments
+
   #get '/posts/search' => 'posts#search'
   #get '/posts/report' => 'posts#report'
   #get '/posts/comment/save/:id' => 'posts#save'

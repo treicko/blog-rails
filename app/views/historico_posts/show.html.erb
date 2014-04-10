@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id post:</strong>
+  <%= @historico_post.id_post %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @historico_post.title %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @historico_post.text %>
+</p>
+
+<%= link_to 'Edit', edit_historico_post_path(@historico_post) %> |
+<%= link_to 'Back', historico_posts_path %>
